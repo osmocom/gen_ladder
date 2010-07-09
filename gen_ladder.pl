@@ -137,7 +137,7 @@ sub entity_left_of($$)
 sub gen_edges()
 {
 	my $count = 1;
-	my $l; my $r; my $dir;
+	my $l; my $r; my $dir; my $attr = "";
 
 	foreach my $m (@cfg_messages) {
 		if (entity_left_of($$m{'src'}, $$m{'dst'})) {
@@ -149,9 +149,15 @@ sub gen_edges()
 			$r = $$m{'src'};
 			$dir = 'back';
 		}
+		if ($$m{'flags'} =~ /\W+both\W*/) {
+			$dir = 'both';
+		}
+		if ($$m{'flags'} =~ /\W+dashed\W*/) {
+			$attr .= ' style=dashed';
+		}
 		print("  { rank=same;\n");
-		printf("    %s%u -> %s%u [dir=%s label=\"%s\"]\n  }\n",
-			$l, $count, $r, $count, $dir, $$m{'label'});
+		printf("    %s%u -> %s%u [dir=%s label=\"%s\"%s]\n  }\n",
+			$l, $count, $r, $count, $dir, $$m{'label'}, $attr);
 		$count++;
 	}
 }
