@@ -1,0 +1,19 @@
+[entities]
+# define the entities in the system (in order)
+ms
+bts
+bsc
+msc
+hlr
+
+[messages]
+# define the protocol messages in-order
+ms	bts	"L1 RACH burst"
+bts	bsc	"RSL CHAN RQD"
+bsc	bts	"RSL CHAN ACT REQ"
+bts	bsc	"RSL CHAN ACT ACK"
+bsc	bts	"RSL IMM ASS CMD"
+bts	ms	"IMMEDIATE ASSIGN"
+ms	bsc	"CM SERVICE REQUEST"
+bsc	msc	"COMPL L3 INFO (CM SERV REQ)"
+ms	msc	"Dedicated Channel" both dashed
