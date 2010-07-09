@@ -1,0 +1,31 @@
+[entities]
+# define the entities in the system (in order)
+ms
+bts
+bsc
+# msc means MSC + VLR
+msc
+hlr
+
+[messages]
+# define the protocol messages in-order
+ms	bts	"L1 RACH burst"
+bts	bsc	"RSL CHAN RQD"
+bsc	bts	"RSL CHAN ACT REQ"
+bts	bsc	"RSL CHAN ACT ACK"
+bsc	bts	"RSL IMM ASS CMD"
+bts	ms	"IMMEDIATE ASSIGN"
+ms	bsc	"MM LOC UPD REQ"
+bsc	msc	"COMPL L3 INFO (LOC UPD REQ)"
+msc	ms	"MM IDENTITY REQUEST"
+ms	msc	"MM IDENTITY RESPONSE"
+msc	hlr	"MAP SEND AUTH INFO req"
+hlr	msc	"MAP SEND AUTH INFO resp"
+msc	ms	"MM AUTH REQ"
+ms	msc	"MM AUTH RESP"
+msc	hlr	"MAP UPD LOC AREA req"
+hlr	msc	"MAP INSERT SUBSCR DATA req"
+msc	hlr	"MAP INSERT SUBSCR DATA resp"
+hlr	msc	"MAP UPD LOC AREA resp"
+
+ms	msc	"Dedicated Channel" both dashed
