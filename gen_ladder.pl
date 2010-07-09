@@ -137,9 +137,9 @@ sub entity_left_of($$)
 sub gen_edges()
 {
 	my $count = 1;
-	my $l; my $r; my $dir; my $attr = "";
 
 	foreach my $m (@cfg_messages) {
+		my $l; my $r; my $dir; my $attr = "";
 		if (entity_left_of($$m{'src'}, $$m{'dst'})) {
 			$l = $$m{'src'};
 			$r = $$m{'dst'};
