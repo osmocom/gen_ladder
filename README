@@ -1,0 +1,18 @@
+gen_ladder - tool to generate protocol ladder diagrams
+(C) 2010 by Harald Welte <laforge@gnumonks.org>
+
+This tool can be used to generate typical ladder diagrams as they are often
+used in the description of networking protocols.
+
+The input file is a ".lad" file, from which gen_ladder.pl generates a graphviz
+file called ".dot", which in turn can be processed by the "dot" program to
+generate a .ps (postscript) or .svg output file.
+
+As an example, I have included a "test.lad" file, which you can process by
+calling
+	make test.ps
+or
+	make test.svg
+
+The manual intermediate steps can be seen from the Makefile.
+
