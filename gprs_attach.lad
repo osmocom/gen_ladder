@@ -1,0 +1,20 @@
+[entities]
+# define the entities in the system (in order)
+ms
+sgsn
+hlr
+
+[messages]
+# define the protocol messages in-order
+ms	sgsn	"GMM GPRS ATTACH REQ (TMSI)"
+sgsn	ms	"GMM IDENTITY req (IMSI)" dashed
+ms	sgsn	"GMM IDENTITY resp (IMSI)" dashed
+sgsn	hlr	"MAP SEND AUTH INFO req"
+hlr	sgsn	"MAP SEND AUTH INFO resp"
+sgsn	ms	"GMM AUTH AND CIPH req"
+ms	sgsn	"GMM AUTH AND CIPH resp"
+sgsn	hlr	"MAP UPDATE GPRS LOCATION req"
+hlr	sgsn	"MAP INSERT SUBSCRIBER DATA req"
+sgsn	hlr	"MAP INSERT SUBSCRIBER DATA resp"
+hlr	sgsn	"MAP UPDATE GPRS LOCATION resp"
+sgsn	ms	"GMM GPRS ATTACH ACCEPT"
