@@ -3,8 +3,8 @@ DOT=dot
 
 default:
 
-%.dot:	%.lad
-	$(GL) $^ > $@
+%.dot:	%.lad $(GL)
+	$(GL) $< > $@
 
 %.ps:	%.dot
 	$(DOT) -Tps < $^ > $@
