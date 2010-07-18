@@ -1,0 +1,63 @@
+# Flow of primitives between SGSN/MSC and HLR in case of location update
+[entities]
+# define the entities in the system (in order)
+sgsn_msc
+libmap_cl
+libtcap_cl
+libtcap_srv
+libmap_srv
+hlr
+
+[messages]
+# define the protocol messages in-order
+sgsn_msc	libmap_cl	"MAP-OPEN.req"
+sgsn_msc	libmap_cl	"MAP-INVOKE.req(UpdLoc)"
+libmap_cl	libtcap_cl	"TC-INVOKE.req"
+sgsn_msc	libmap_cl	"MAP-DELIMITER.req"
+libmap_cl	libtcap_cl	"TC-BEGIN.req"
+
+libtcap_cl	libtcap_srv	"TC-BEGIN(UpdLoc)"
+
+libtcap_srv	libmap_srv	"TC-BEGIN.ind"
+libmap_srv	hlr		"MAP-OPEN.ind"
+hlr		libmap_srv	"MAP-OPEN.resp"
+
+libtcap_srv	libmap_srv	"TC-INVOKE.ind(UpdLoc)"
+libmap_srv	hlr		"MAP-INVOKE.ind(UpdLoc)"
+hlr		libmap_srv	"MAP-INVOKE.req(insSubDat)"
+libmap_srv	libtcap_srv	"TC-INVOKE.req(insSubDat)"
+
+libmap_srv	hlr		"MAP-DELIMITER.ind"
+hlr		libmap_srv	"MAP-DELIMITER.req"
+
+libmap_srv	libtcap_srv	"TC-CONTINUE.req"
+libtcap_srv	libtcap_cl	"TC-CONTINUE(insSubDatInv)"
+
+libtcap_cl	libmap_cl	"TC-CONTINUE.req"
+libmap_cl	sgsn_msc	"MAP-OPEN.resp"
+libtcap_cl	libmap_cl	"TC-INVOKE.ind(insSubDat)"
+libmap_cl	sgsn_msc	"MAP-INVOKE.ind(insSubDat)"
+sgsn_msc	libmap_cl	"MAP-RESULT-L.req(insSubDat)"
+libmap_cl	libtcap_cl	"TC-RESULT-L.req(insSubDat)"
+
+libmap_cl	sgsn_msc	"MAP-DELIMITER.ind"
+sgsn_msc	libmap_cl	"MAP-DELIMITER.req"
+
+libmap_cl	libtcap_cl	"TC-CONTINUE.req(insSubDatResL)"
+libtcap_cl	libtcap_srv	"TC-CONTINUE(insSubDatResL)"
+libtcap_srv	libmap_srv	"TC-CONTINUE.ind"
+libtcap_srv	libmap_srv	"TC-RESULT-L.ind(insSubDat)"
+libmap_srv	hlr		"MAP-RESULT-L.ind(insSubDat)"
+
+hlr		libmap_srv	"MAP-RESULT-L.req(UpdLoc)"
+libmap_srv	libtcap_srv	"TC-RESULT-L.req(UpdLoc)"
+
+libmap_srv	hlr		"MAP-DELIMITER.ind"
+hlr		libmap_srv	"MAP-DELIMITER.req"
+
+libmap_srv	libtcap_srv	"TC-CONTINUE.req"
+libtcap_srv	libtcap_cl	"TC-CONTINUE(UpdLocResL)"
+
+libtcap_cl	libmap_cl	"TC-CONTUNUE.ind"
+libtcap_cl	libmap_cl	"TC-RESULT-L.ind(UpdLoc)"
+libmap_cl	sgsn_msc	"MAP-RESULT-L.ind(UpdLoc)"
