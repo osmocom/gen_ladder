@@ -45,12 +45,12 @@ sub parse_cfg_line($)
 		return;
 	}
 	if ($cfg_parse_section eq 'entities') {
-		my ($entity) = $line =~ /^(\w+)/;
+		my ($entity) = $line =~ /^(\S+)/;
 		$cfg_entities{$entity} = $cfg_nr_entities++;
 		push(@cfg_entity_arr, $entity);
 	} elsif ($cfg_parse_section eq 'messages') {
 		my ($src, $dst, $label, $flags) =
-				$line =~ /(\w+)\s+(\w+)\s+"(.*)"(.*)/;
+				$line =~ /(\S+)\s+(\S+)\s+"(.*)"(.*)/;
 		my %msg;
 		$msg{'src'} = $src;
 		$msg{'dst'} = $dst;
