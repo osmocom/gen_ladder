@@ -11,7 +11,9 @@ server
 # define the protocol messages in-order
 client		libmap_cl	"MAP-OPEN.req"
 client		libmap_cl	"MAP-INVOKE.req"
+libmap_cl	libtcap_cl	"TC-INVOKE.req"
 client		libmap_cl	"MAP-INVOKE.req"
+libmap_cl	libtcap_cl	"TC-INVOKE.req"
 client		libmap_cl	"MAP-DELIMITER.req"
 libmap_cl	libtcap_cl	"TC-BEGIN.req"
 
