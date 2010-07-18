@@ -1,0 +1,47 @@
+[entities]
+# define the entities in the system (in order)
+client
+libmap_cl
+libtcap_cl
+libtcap_srv
+libmap_srv
+server
+
+[messages]
+# define the protocol messages in-order
+client		libmap_cl	"MAP-OPEN.req"
+client		libmap_cl	"MAP-INVOKE.req"
+client		libmap_cl	"MAP-INVOKE.req"
+client		libmap_cl	"MAP-DELIMITER.req"
+libmap_cl	libtcap_cl	"TC-BEGIN.req"
+
+libtcap_cl	libtcap_srv	"TC-BEGIN(INV, INV)"
+
+libtcap_srv	libmap_srv	"TC-BEGIN.ind"
+libmap_srv	server		"MAP-OPEN.ind"
+server		libmap_srv	"MAP-OPEN.resp"
+
+libtcap_srv	libmap_srv	"TC-INVOKE.ind"
+libmap_srv	server		"MAP-INVOKE.ind"
+server		libmap_srv	"MAP-RESULT-L.req"
+libmap_srv	libtcap_srv	"TC-RESULT-L.req"
+
+libtcap_srv	libmap_srv	"TC-INVOKE.ind (last)"
+libmap_srv	server		"MAP-INVOKE.ind"
+server		libmap_srv	"MAP-RESULT-L.req"
+libmap_srv	libtcap_srv	"TC-RESULT-L.req"
+
+libmap_srv	server		"MAP-DELIMITER.ind"
+server		libmap_srv	"MAP-DELIMITER.req"
+libmap_srv	libtcap_srv	"TC-CONTINUE.req"
+
+libtcap_srv	libtcap_cl	"TC-CONTINUE(ResL, ResL)"
+
+libtcap_cl	libmap_cl	"TC-CONTINUE.req"
+libmap_cl	client		"MAP-OPEN.resp"
+libtcap_cl	libmap_cl	"TC-RESULT-L.ind"
+libmap_cl	client		"MAP-RESULT-L.ind"
+libtcap_cl	libmap_cl	"TC-RESULT-L.ind (last)"
+libmap_cl	client		"MAP-RESULT-L.ind"
+libmap_cl	client		"MAP-DELIMITER.ind"
+
