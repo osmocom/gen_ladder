@@ -55,9 +55,10 @@ libmap_srv	libtcap_srv	"TC-RESULT-L.req(UpdLoc)"
 libmap_srv	hlr		"MAP-DELIMITER.ind"
 hlr		libmap_srv	"MAP-DELIMITER.req"
 
-libmap_srv	libtcap_srv	"TC-CONTINUE.req"
-libtcap_srv	libtcap_cl	"TC-CONTINUE(UpdLocResL)"
+libmap_srv	libtcap_srv	"TC-END.req"
+libtcap_srv	libtcap_cl	"TC-END(UpdLocResL)"
 
-libtcap_cl	libmap_cl	"TC-CONTUNUE.ind"
+libtcap_cl	libmap_cl	"TC-END.ind"
 libtcap_cl	libmap_cl	"TC-RESULT-L.ind(UpdLoc)"
 libmap_cl	sgsn_msc	"MAP-RESULT-L.ind(UpdLoc)"
+libmap_cl	sgsn_msc	"MAP-CLOSE.ind"
