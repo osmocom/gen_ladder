@@ -1,0 +1,16 @@
+[entities]
+# define the entities in the system (in order)
+ms
+msc
+smsc
+
+[messages]
+# define the protocol messages in-order
+smsc	msc	"NMSMS-EST-REQ (RP-DATA)"
+msc	ms	"Paging procedure via BSC/BTS" dashed
+ms	msc	"Establish Connection via BTS/BSC" dashed
+msc	ms	"CP-DATA containing RP-DATA (SMS DELIVER)"
+ms	msc	"CP-ACK for previous CP-DATA"
+ms	msc	"CP-DATA containing RP-ACK"
+msc	smsc	"NMSMS-DATA-IND (RP-DATA)"
+msc	ms	"CP-ACK for previous CP-DATA"
