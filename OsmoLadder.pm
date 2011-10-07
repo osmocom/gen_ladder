@@ -24,6 +24,7 @@ use GD::Arrow;
 
 my $ROW_SIZE = 50;
 my $HEAD_SIZE = 70;
+my $TITLE_SIZE = 20;
 my $FOOT_SIZE = 50;
 my $COL_SIZE_MIN = 200;
 my $MARGIN_LR = 50;
@@ -31,11 +32,14 @@ my $NODELINE_OVERLAP = 30;
 
 my $FONT = "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf";
 
+my $graph_title;
+
 sub compute_img_size($$)
 {
 	my ($num_nodes, $num_msgs) = @_;
 
-	my $height = (($num_msgs-1) * $ROW_SIZE) + $HEAD_SIZE + $FOOT_SIZE;
+	my $height = (($num_msgs-1) * $ROW_SIZE) +
+			$HEAD_SIZE + $TITLE_SIZE + $FOOT_SIZE;
 	my $width = 2*$MARGIN_LR + ($num_nodes-1)*$COL_SIZE_MIN;
 
 	return ($width, $height);
@@ -52,7 +56,7 @@ sub compute_msg_y($)
 {
 	my $msg_num = shift;
 
-	return $HEAD_SIZE + $msg_num * $ROW_SIZE;
+	return $HEAD_SIZE + $TITLE_SIZE + $msg_num * $ROW_SIZE;
 }
 
 my %nodes;
@@ -136,6 +140,11 @@ sub draw_msg_label($$$$$)
 	draw_scaled_label($im, $text, $line_y, $start_x, $end_x);
 }
 
+sub set_title($)
+{
+	$graph_title = shift;
+}
+
 sub draw_graph($)
 {
 	my $outfile_name = shift;
@@ -147,6 +156,12 @@ sub draw_graph($)
 	my $white = $im->colorAllocate(255, 255, 255);
 	$im->transparent($white);
 	my $black = $im->colorAllocate(0, 0, 0);
+
+	if ($graph_title) {
+		my $gap_oneside = ($x/2) * 0.8;
+		draw_scaled_label($im, $graph_title, $TITLE_SIZE,
+				  $x/2-$gap_oneside, $x/2+$gap_oneside);
+	}
 
 	# vertical lines for each of the nodes in the graph
 	foreach my $n (values %nodes) {

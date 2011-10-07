@@ -41,7 +41,12 @@ sub parse_cfg_line($)
 		($cfg_parse_section) = $line =~ /^\[(.*)\]/;
 		return;
 	}
-	if ($cfg_parse_section eq 'entities') {
+	if ($cfg_parse_section eq 'global') {
+		if ($line =~ /^title/) {
+			my ($title) = $line =~ /^title\s+"(.*)"/;
+			OsmoLadder::set_title($title);
+		}
+	} elsif ($cfg_parse_section eq 'entities') {
 		if (my ($entity, $label) = $line =~ /^(\S+)\s+"(.+)"/) {
 			OsmoLadder::new_node($entity, $label);
 		} else {
