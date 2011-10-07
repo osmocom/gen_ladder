@@ -3,14 +3,8 @@ DOT=dot
 
 default:
 
-%.dot:	%.lad $(GL)
-	$(GL) $< > $@
-
-%.ps:	%.dot
-	$(DOT) -Tps < $^ > $@
-
-%.svg:	%.dot
-	$(DOT) -Tsvg < $^ > $@
+%.png:	%.lad $(GL)
+	$(GL) $< $@
 
 clean:
-	rm *.dot *.ps *.svg
+	rm *.dot *.ps *.svg *.png
