@@ -1,0 +1,31 @@
+[entities]
+# define the entities in the system (in order)
+a		"A (Caller)"
+gmsc		"GMSC"
+hlr		"HLR"
+vmsc		"VMSC"
+ms		"MS (Called)
+
+[messages]
+# define the protocol messages in-order
+a	gmsc	"ISUP IAM[MSISDN]"
+
+gmsc	hlr		"MAP SRI[MSISDN]"
+hlr	vmsc		"MAP PRN[IMSI]"
+vmsc	hlr		"MAP PRN-Res[MSRN]"
+hlr	gmsc		"MAP SRI-Res[MSRN]"
+
+gmsc	vmsc		"ISUP IAM[MSRN]"
+vmsc	ms		"CC SETUP"
+ms	vmsc		"CC CALL CONFIRMED"
+ms	vmsc		"CC ALERTING"
+vmsc	gmsc		"ISUP ACM"
+gmsc	a		"ISUP ACM"
+ms	vmsc		"CC CONNECT"
+vmsc	gmsc		"ISUP ANM"
+gmsc	a		"ISUP ANM"
+
+a	gmsc		"ISUP REL"
+gmsc	vmsc		"ISUP REL"
+vmsc	ms		"CC RELEASE"
+ms	vmsc		"CC RELEASE COMPLETE"

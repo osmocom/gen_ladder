@@ -1,0 +1,31 @@
+[entities]
+a	"A-party"
+gmsc	"GMSC/gsmSSF"
+hlr	"HLR"
+scf_mt	"gsmSCF (MT)"
+scf_mf	"gsmSCF (MF)"
+c	"C-party"
+
+[messages]
+a	gmsc	"ISUP IAM[MSISDN]"
+gmsc	hlr	"MAP SRI[MSISDN]"
+hlr	gmsc	"MAP SRI-Res[FTN-U, T-CSI, O-CSI]"
+gmsc	scf_mt	"CAP IDP[MSISDN]"
+scf_mt	gmsc	"CAP RRB[T-Answer, T-Disconnect]; CAP CUE"
+
+gmsc	scf_mf	"CAP IDP[FTN-U]"
+scf_mf	gmsc	"CAP RRB[O-Answer, O-Disconnect]; CAP CUE"
+
+gmsc	c	"ISUP IAM[FTN-U]"
+c	gmsc	"ISUP ACM"
+gmsc	a	"ISUP ACM"
+
+c	gmsc	"ISUP ANM"
+gmsc	scf_mf	"CAP ERB[O-Answer]"
+gmsc	scf_mt	"CAP ERB[T-Answer]"
+gmsc	a	"ISUP ANM"
+
+c	gmsc	"ISUP REL"
+gmsc	scf_mf	"CAP ERB[O-Disconnect]"
+gmsc	scf_mt	"CAP ERB[T-Disconnect]"
+gmsc	a	"ISUP REL"

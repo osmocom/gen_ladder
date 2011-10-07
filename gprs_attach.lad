@@ -1,8 +1,8 @@
 [entities]
 # define the entities in the system (in order)
-ms
-sgsn
-hlr
+ms		"MS"
+sgsn		"SGSN"
+hlr		"HLR"
 
 [messages]
 # define the protocol messages in-order

@@ -1,0 +1,14 @@
+[entities]
+ms	"MS"
+msc	"MSC/VLR"
+hlr	"HLR"
+
+[messages]
+ms	msc	"CM SERVICE REQUEST"
+ms	msc	"Authentication/Ciphering" dashed both
+ms	msc	"DTAP FACILITY (INTERR SS REQ)"
+msc	hlr	"MAP INTERROGATE SS req"
+hlr	msc	"MAP INTERROGATE SS resp"
+msc	ms	"DTAP FACILITY (INTERR SS RESP)"
+hlr	msc	"MAP INS SUBSCR DATA req"
+msc	hlr	"MAP INS SUBSCR DATA resp"

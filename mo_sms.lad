@@ -1,16 +1,19 @@
 [entities]
 # define the entities in the system (in order)
-ms
-msc
-smsc
+ms	"MS"
+msc	"MSC"
+iwmsc	"IW-MSC"
+smsc	"SMSC"
 
 [messages]
 # define the protocol messages in-order
 ms	msc	"Establish Connection via BTS/BSC" dashed
 ms	msc	"Optional authentication + ciphering" both
-ms	msc	"CP-DATA containing RP-DATA (SMS SUBMIT)"
-msc	smsc	"MNSMS-EST-IND (RP-DATA)"
+ms	msc	"CP-DATA (RP-DATA (SMS SUBMIT))"
 msc	ms	"CP-ACK for previous CP-DATA"
-smsc	msc	"MNSMS-DATA-REQ (RP-ACK)"
-msc	ms	"CP-DATA containing RP-ACK"
+msc	iwmsc	"MAP MO FWD SM req"
+iwmsc	smsc	"MNSMS-EST-IND (RP-DATA)"
+smsc	iwmsc	"MNSMS-DATA-REQ (RP-ACK)"
+iwmsc	msc	"MAP MO FWD SM resp"
+msc	ms	"CP-DATA (RP-ACK)"
 ms	msc	"CP-ACK for previous CP-DATA"

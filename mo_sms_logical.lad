@@ -1,0 +1,28 @@
+[entities]
+ms-rl	"MS SM-RL"
+ms-cm	"MS SM-CM"
+ms-llc	"MS SM-LLC"
+net-llc	"SGSN LLC"
+net-cm	"Network CM"
+net-rl	"Network RL"
+
+[messages]
+ms-rl	ms-cm	"MNSMS-EST.req (RP-DATA)"
+ms-cm	ms-llc	"LL-UNITDATA.req (TLLI, CP-DATA)"
+ms-llc	net-llc	"LLC-UI (CP-DATA)"
+net-llc	net-cm	"LL-UNITDATA.ind (TLLI, CP-DATA)"
+net-cm	net-rl	"MNSMS-EST.ind (RP-DATA)"
+net-cm	net-llc	"LL-UNITDATA.req (TLLI, CP-ACK)"
+net-llc	ms-llc	"LLC-UI (CP-ACK)"
+ms-llc	ms-cm	"LL-UNITDATA.ind (TLLI, CP-ACK)"
+
+net-rl	net-cm	"MNSMS-DATA.req (RP-ACK)"
+net-cm	net-llc	"LL-UNITDATA.req (TLLI, CP-DATA)"
+net-llc	ms-llc	"LLC-UI (CP-DATA)"
+ms-llc	ms-cm	"LL-UNITDATA.ind (TLLI, CP-DATA)"
+ms-cm	ms-rl	"MNSMS-DATA.ind (RP-ACK)"
+ms-cm	ms-llc	"LL-UNITDATA.req (TLLI, CP-ACK)"
+ms-llc	net-llc	"LLC-UI (CP-ACK)"
+net-llc	net-cm	"LL-UNITDATA.ind (TLLI, CP-ACK)"
+ms-rl	ms-cm	"MNSMS-REL.req"
+net-rl	net-cm	"MNSMS-REL.req"

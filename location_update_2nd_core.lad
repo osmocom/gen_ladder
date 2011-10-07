@@ -1,0 +1,33 @@
+[entities]
+# define the entities in the system (in order)
+ms	"MS"
+msc	"MSC/VLR (New)"
+hlr	"HLR/AUC"
+msc_old	"MSC/VLR (Old)"
+
+[messages]
+# define the protocol messages in-order
+ms	msc	"Channel Establishment" both
+ms	msc	"MM LOC UPD REQ [TMSI]"
+
+msc	msc_old	"MAP SEND IDENTIFICATION req [TMSI]"
+msc_old	msc	"MAP SEND IDENTIFICATION resp [IMSI,Auth]"
+
+msc	ms	"MM AUTH REQ"
+ms	msc	"MM AUTH RESP"
+
+msc	hlr	"MAP UPD LOC AREA req"
+
+hlr	msc_old	"MAP CANCEL LOCATION req"
+msc_old	hlr	"MAP CANCEL LOCATION resp"
+
+hlr	msc	"MAP INSERT SUBSCR DATA req"
+msc	hlr	"MAP INSERT SUBSCR DATA resp"
+
+hlr	msc	"MAP UPD LOC AREA resp"
+
+
+msc	ms	"RR CIPH MOD CMD"
+ms	msc	"RR CIPH MOD COMPL"
+
+msc	ms	"DTAP(MM LOC UPD RESP)"

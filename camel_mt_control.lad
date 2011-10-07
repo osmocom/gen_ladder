@@ -1,0 +1,35 @@
+[entities]
+# define the entities in the system (in order)
+a		"A"
+gmsc_ssf	"GMSC/gsmSSF"
+hlr		"HLR"
+vmsc		"VMSC"
+scf		"gsmSCF"
+
+[messages]
+# define the protocol messages in-order
+a		gmsc_ssf	"ISUP IAM[MSISDN]"
+
+gmsc_ssf	hlr		"MAP SRI[MSISDN]"
+hlr		vmsc		"MAP PSI[IMSI]"
+vmsc		hlr		"MAP PSI-Res"
+hlr		gmsc_ssf	"MAP SRI-Res[T-CSI]"
+
+gmsc_ssf	scf		"CAP IDP"
+scf		gmsc_ssf	"CAP RRB, CUE"
+
+gmsc_ssf	hlr		"MAP SRI[MSISDN]"
+hlr		vmsc		"MAP PRN[IMSI]"
+vmsc		hlr		"MAP PRN-Res[MSRN]"
+hlr		gmsc_ssf	"MAP SRI-Res[MSRN]"
+
+gmsc_ssf	vmsc		"ISUP IAM[MSRN]"
+vmsc		gmsc_ssf	"ISUP ACM"
+gmsc_ssf	a		"ISUP ACM"
+vmsc		gmsc_ssf	"ISUP ANM"
+gmsc_ssf	a		"ISUP ANM"
+gmsc_ssf	scf		"CAP ERB[Answer]"
+
+a		gmsc_ssf	"ISUP REL"
+gmsc_ssf	scf		"CAP ERB[Disconnect]"
+gmsc_ssf	vmsc		"ISUP REL"

@@ -1,11 +1,11 @@
 [entities]
 # define the entities in the system (in order)
-ms
-bts
-bsc
+ms	"MS"
+bts	"BTS"
+bsc	"BSC"
 # msc means MSC + VLR
-msc
-hlr
+msc	"MSC/VLR"
+hlr	"HLR/AUC"
 
 [messages]
 # define the protocol messages in-order
@@ -28,4 +28,9 @@ hlr	msc	"MAP INSERT SUBSCR DATA req"
 msc	hlr	"MAP INSERT SUBSCR DATA resp"
 hlr	msc	"MAP UPD LOC AREA resp"
 
-ms	msc	"Dedicated Channel" both dashed
+msc	bsc	"BSSMAP (RR CIPH MOD CMD)"
+bsc	bts	"RSL ENCR CMD"
+bts	ms	"RR CIPH MOD CMD"
+ms	msc	"RR CIPH MOD COMPL"
+
+msc	ms	"DTAP(MM LOC UPD RESP)"

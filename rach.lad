@@ -1,0 +1,14 @@
+[entities]
+# define the entities in the system (in order)
+ms		"MS"
+bts		"BTS"
+bsc		"BSC"
+
+[messages]
+# define the protocol messages in-order
+ms	bts	"RACH burst (8 bit payload)"
+bts	bsc	"RSL CHAN RQD (reason = RACH burst)"
+bsc	bts	"RSL CHAN ACT"
+bts	bsc	"RSL CHAN ACT ACK"
+bsc	bts	"RSL IMMEDIATE ASSIGNMENT CMD"
+bts	ms	"RR IMMEDIATE ASSIGNMENT"

@@ -1,0 +1,46 @@
+[entities]
+a	"A-party"
+gmsc	"GMSC/gsmSSF"
+hlr	"HLR"
+vmsc	"VMSC"
+scf_mt	"gsmSCF (MT)"
+scf_mf	"gsmSCF (MF)"
+c	"C-party"
+
+[messages]
+a	gmsc	"ISUP IAM[MSISDN]"
+gmsc	hlr	"MAP SRI[MSISDN]"
+hlr	gmsc	"MAP SRI-Res[T-CSI]"
+gmsc	scf_mt	"CAP IDP[MSISDN]"
+scf_mt	gmsc	"CAP RRB[T-Answer, T-Disconnect]; CAP CUE"
+
+gmsc	hlr	"MAP SRI[MSISD, supp-CSI]"
+hlr	vmsc	"MAP PRN[IMSI]"
+vmsc	hlr	"MAP PRN-Res[MSRN]"
+hlr	gmsc	"MAP SRI-Res[MSRN]"
+
+gmsc	vmsc	"ISUP IAM[MSRN]"
+vmsc	gmsc	"ISUP ACM"
+gmsc	a	"ISUP ACM"
+
+# called party rejects incoming call
+vmsc	scf_mf	"CAP IDP[FTN-B]"
+scf_mf	vmsc	"CAP RRB; CAP CUE"
+vmsc	c	"ISUP IAM[FTN-B]"
+c	vmsc	"ISUP ACM"
+vmsc	gmsc	"ISUP CPG"
+gmsc	a	"ISUP CPG"
+
+c	vmsc	"ISUP ANM"
+vmsc	scf_mf	"CAP ERB[O-Answer]"
+vmsc	gmsc	"ISUP ANM"
+gmsc	scf_mt	"CAP ERB[T-Answer]"
+gmsc	a	"ISUP ANM"
+
+c	vmsc	"ISUP REL"
+vmsc	scf_mf	"CAP ERB[O-Disconnect]"
+scf_mt	vmsc	"CAP CUE"
+vmsc	gmsc	"ISUP REL"
+gmsc	scf_mt	"CAP ERB[T-Disconnect]"
+scf_mt	gmsc	"CAP CUE"
+gmsc	a	"ISUP REL"

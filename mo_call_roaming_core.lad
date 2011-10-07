@@ -1,0 +1,24 @@
+[entities]
+ms	"MS (Caller)"
+vmsc	"MSC/VLR"
+hlr	"HLR/AUC"
+b	"B (Called)"
+
+[messages]
+ms	vmsc	"Channel Establishment"
+ms	vmsc	"CM SERVICE REQ"
+vmsc	hlr	"MAP SEND AUTH INFO req"
+hlr	vmsc	"MAP SEND AUTH INFO resp"
+vmsc	ms	"MM AUTH REQ"
+ms	vmsc	"MM AUTH RESP"
+vmsc	ms	"RR CIPH MOD CMD"
+ms	vmsc	"RR CIPH MOD COMPL"
+ms	vmsc	"CC SETUP[MSISDN]"
+vmsc	b	"ISUP IAM[MSISDN]"
+b	vmsc	"ISUP ACM"
+vmsc	ms	"CC ALERTING"
+b	vmsc	"ISUP ANM"
+vmsc	ms	"CC CONNECT"
+ms	b	"Open Voice Channel" both dashed
+ms	vmsc	"CC DISCONNECT"
+vmsc	b	"ISUP REL"
