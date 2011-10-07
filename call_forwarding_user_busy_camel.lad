@@ -1,3 +1,6 @@
+[global]
+title	"CAMEL: User-determined busy on MT call"
+
 [entities]
 a	"A-party"
 gmsc	"GMSC/gsmSSF"

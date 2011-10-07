@@ -1,4 +1,7 @@
 # Flow of primitives between SGSN/MSC and HLR in case of location update
+[global]
+title	"Flow of primitives between SGSN/MSC and HLR in LU"
+
 [entities]
 # define the entities in the system (in order)
 sgsn_msc

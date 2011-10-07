@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Terminated(MT) Call: GERAN + CN view"
+
 [entities]
 ms	"MS (Called)"
 bts	"BTS (VPLMN)"

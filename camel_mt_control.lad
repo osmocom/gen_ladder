@@ -1,3 +1,6 @@
+[global]
+title 		"CAMEL: MT Call (t-CSI) example"
+
 [entities]
 # define the entities in the system (in order)
 a		"A"

@@ -1,3 +1,6 @@
+[global]
+title	"MT SMS in CN"
+
 [entities]
 # define the entities in the system (in order)
 ms	"MS"

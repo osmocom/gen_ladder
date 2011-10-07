@@ -1,3 +1,6 @@
+[global]
+title	"Basic examlpe of a TCAP/MAP client/server"
+
 [entities]
 # define the entities in the system (in order)
 client

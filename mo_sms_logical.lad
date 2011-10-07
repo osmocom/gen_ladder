@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Originated (MO) SMS accross layers"
+
 [entities]
 ms-rl	"MS SM-RL"
 ms-cm	"MS SM-CM"

@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Terminated (MT) Call in GERAN and CN"
+
 [entities]
 ms	"MS"
 bts	"BTS"

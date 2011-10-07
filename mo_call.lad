@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Originated (MO) call in RAN and CN"
+
 [entities]
 ms	"MS"
 bts	"BTS"

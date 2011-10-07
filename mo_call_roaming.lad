@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Originated (MO) call: Roaming case"
+
 [entities]
 ms	"MS (Caller)"
 bts	"BTS"

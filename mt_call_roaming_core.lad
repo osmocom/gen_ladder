@@ -1,3 +1,6 @@
+[global]
+title	"Mobile Terminated (MT) call: Core network view"
+
 [entities]
 # define the entities in the system (in order)
 a		"A (Caller)"

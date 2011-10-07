@@ -1,3 +1,6 @@
+[global]
+title	"CAMEL: Unconditional MT Call Forwarding"
+
 [entities]
 a	"A-party"
 gmsc	"GMSC/gsmSSF"

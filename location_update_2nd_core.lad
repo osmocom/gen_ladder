@@ -1,3 +1,6 @@
+[global]
+title	"GSM Location Update (2nd with cancel)"
+
 [entities]
 # define the entities in the system (in order)
 ms	"MS"

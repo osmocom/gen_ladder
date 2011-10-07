@@ -1,3 +1,6 @@
+[global]
+title	"this is a test"
+
 [entities]
 # define the entities in the system (in order)
 ms

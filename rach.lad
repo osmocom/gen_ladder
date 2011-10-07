@@ -1,3 +1,6 @@
+[global]
+title	"RACH request and channel allocation in GSM RAN"
+
 [entities]
 # define the entities in the system (in order)
 ms		"MS"
