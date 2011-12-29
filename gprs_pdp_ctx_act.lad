@@ -1,0 +1,25 @@
+[global]
+title	"GPRS PDP Context Activation (L3 only)"
+
+[entities]
+# define the entities in the system (in order)
+ms	"MS"
+bss	"BSS"
+sgsn	"SGSN"
+dns	"DNS"
+ggsn	"GGSN"
+
+[messages]
+# define the protocol messages in-order
+ms	bss	"L1 RACH burst"
+bss	ms	"RLC/MAC establishment"
+ms	sgsn	"LLC (SM PDP CONTEXT ACT REQ)"
+sgsn	dns	"DNS query A record of APN"
+dns	sgsn	"DNS response IP address of GGSN"
+sgsn	ggsn	"GTP-C (PDP CONTEXT ACT REQ)"
+ggsn	sgsn	"GTP-C (PDP CONTEXT ACT ACK)"
+sgsn	ms	"LLC (SM PDP CONTEXT ACT ACK)"
+ms	sgsn	"LLC (SNDCP (encapsulated IPv4))"
+sgsn	ggsn	"GTP-U (encapsulated IPv4)"
+ggsn	sgsn	"GTP-U (encapsulated IPv4)"
+sgsn	ms	"LLC (SNDCP (encapsulated IPv4))"

@@ -1,0 +1,27 @@
+[global]
+title	"GPRS Routeing Area Update (L3 only)"
+
+[entities]
+# define the entities in the system (in order)
+ms	"MS"
+bss	"BSS"
+# msc means MSC + VLR
+sgsn	"SGSN"
+hlr	"HLR/AUC"
+
+[messages]
+# define the protocol messages in-order
+ms	bss	"L1 RACH burst"
+bss	ms	"RLC/MAC establishment"
+ms	sgsn	"LLC (GMM ROUTEING AREA UPDATE REQ)"
+sgsn	ms	"LLC (GMM IDENTITY REQUEST)"
+ms	sgsn	"LLC (GMM IDENTITY RESPONSE)"
+sgsn	hlr	"MAP SEND AUTH INFO req"
+hlr	sgsn	"MAP SEND AUTH INFO resp"
+sgsn	ms	"LLC (GMM AUTH REQ)"
+ms	sgsn	"LLC (GMM AUTH RESP)"
+sgsn	hlr	"MAP UPD GPRS LOC AREA req"
+hlr	sgsn	"MAP INSERT SUBSCR DATA req"
+sgsn	hlr	"MAP INSERT SUBSCR DATA resp"
+hlr	sgsn	"MAP UPD GPRS LOC AREA resp"
+sgsn	ms	"LLC (GMM ROUTEING AREA UPD RESP)"
