@@ -1,0 +1,39 @@
+[global]
+title	"Mobile Terminated (MT) SMS in CN with fail/alert"
+
+[entities]
+# define the entities in the system (in order)
+ms	"MS"
+msc	"MSC/VLR"
+hlr	"HLR"
+gmsc	"SMS GW-MSC"
+smsc	"SMSC"
+
+[messages]
+# define the protocol messages in-order
+smsc	gmsc	"NMSMS-EST-REQ (RP-DATA)"
+gmsc	hlr	"MAP SRI SM req"
+hlr	gmsc	"MAP SRI SM resp"
+gmsc	msc	"MAP MT FORWARD SM req"
+msc	ms	"Paging procedure via BSC/BTS" dashed
+msc	gmsc	"MAP MT FORWARD SM resp (fail)"
+gmsc	hlr	"MAP Report SM Deliver Sts req"
+hlr	gmsc	"MAP Report SM Deliver Sts resp"
+
+msc	hlr	"MAP ReadyForSM req"
+hlr	msc	"MAP ReadyForSM resp"
+hlr	gmsc	"MAP AlertServiceCentre req"
+gmsc	hlr	"MAP AlertServiceCentre resp"
+
+gmsc	hlr	"MAP SRI SM req"
+hlr	gmsc	"MAP SRI SM resp"
+gmsc	msc	"MAP MT FORWARD SM req"
+msc	ms	"Paging procedure via BSC/BTS" dashed
+ms	msc	"Establish Connection via BTS/BSC" dashed
+msc	ms	"Authentication / Ciperhing" dashed both
+msc	ms	"CP-DATA (RP-DATA (SMS DELIVER))"
+ms	msc	"CP-ACK for previous CP-DATA"
+ms	msc	"CP-DATA (RP-ACK)"
+msc	gmsc	"MAP MT FORWARD SMS resp"
+msc	ms	"CP-ACK for previous CP-DATA"
+gmsc	smsc	"NMSMS-DATA-IND (RP-DATA)"
