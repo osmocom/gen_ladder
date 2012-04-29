@@ -1,0 +1,31 @@
+[global]
+title	"Example of ISUP message sequence flow"
+
+[entities]
+ms_a		"MS-A"
+vmsc_a		"VMSC-A"
+gmsc_b		"GMSC-B"
+vmsc_b		"VMSC-B"
+ms_b		"MS-B"
+
+[messages]
+ms_a		vmsc_a		"CC SETUP"
+vmsc_a		gmsc_b		"IAM[MSISDN]"
+gmsc_b		vmsc_a		"Optional ACM"
+gmsc_b		vmsc_b		"IAM[MSRN]"
+vmsc_b		ms_b		"CC SETUP"
+
+ms_b		vmsc_b		"CC ALERTING"
+vmsc_b		gmsc_b		"ACM"
+gmsc_b		vmsc_a		"ACM/CPG"
+vmsc_a		ms_a		"CC ALERTING"
+
+ms_b		vmsc_b		"CC CONNECT"
+vmsc_b		gmsc_b		"ANM"
+gmsc_b		vmsc_a		"ANM"
+vmsc_a		ms_a		"CC CONNECT"
+
+ms_a		vmsc_a		"CC RELEASE"
+vmsc_a		gmsc_b		"REL"
+gmsc_b		vmsc_b		"REL"
+vmsc_b		ms_b		"CC RELEASE"

@@ -1,0 +1,17 @@
+[global]
+title	"Example TC signal sequence"
+
+[entities]
+msc		"MSC/gsmSSF"
+scp		"SCP"
+
+[messages]
+msc		scp		"TC_Begin [IDP]"
+scp		msc		"TC_Continue [RT]"
+scp		msc		"TC_Continue [FCI, RRB, CUE]"
+
+msc		scp		"TC_Continue [ERB(Answer)]"
+scp		msc		"TC_Continue [ACH, CUE]"
+
+msc		scp		"TC_Continue [ACR, ERB(Disconnect)]"
+scp		msc		"TC_End [CUE]"

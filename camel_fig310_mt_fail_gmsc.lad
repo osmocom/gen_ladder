@@ -1,0 +1,27 @@
+[global]
+title	"MT call estabilshment failure in GMSC"
+
+[entities]
+a		"A"
+gmsc		"GMSC/gsmSSF"
+hlr		"HLR"
+vmsc		"VMSC"
+scf		"gsmSCF"
+
+[messages]
+a		gmsc	"ISUP IAM [MSISDN]"
+
+gmsc		hlr	"MAP SRI [MSISDN]"
+hlr		vmsc	"MAP PSI [IMSI]"
+vmsc		hlr	"MAP PSI-Res"
+hlr		gmsc	"MAP SRI-Res [T-CSI]"
+gmsc		scf	"CAP IDP"
+scf		gmsc	"CAP RRB, CUE"
+
+gmsc		hlr	"MAP SRI[MSISDN]"
+hlr		vmsc	"MAP PRN [IMSI]"
+vmsc		hlr	"MAP PRN-Error"
+hlr		gmsc	"MAP SRI-Error"
+
+gmsc		scf	"CAP Abort"
+gmsc		a	"ISUP REL"

@@ -1,0 +1,37 @@
+[global]
+title	"MT call - unconditional call forwarding"
+
+[entities]
+a		"A-party"
+gmsc		"GMSC/gsmSSF"
+hlr		"HLR"
+scf		"gsmSCF (MT)"
+scf_f		"gsmSCF (MF)"
+c		"C-party"
+
+[messages]
+a		gmsc	"ISUP IAM [MSISDN]"
+
+gmsc		hlr	"MAP SRI [MSISDN]"
+hlr		gmsc	"MAP SRI-Res [FTN-U, T-CSI, O-CSI]"
+gmsc		scf	"CAP IDP [MSISDN]"
+scf		gmsc	"CAP RRB [T-Answer, T-Disconnect]"
+scf		gmsc	"CAP CUE"
+
+gmsc		scf_f	"CAP IDP [FTN-U]"
+scf_f		gmsc	"CAP RRB [O-Answer, O-Disconnect]"
+scf_f		gmsc	"CAP CUE"
+
+gmsc		c	"ISUP IAM [FTN-U]"
+c		gmsc	"ISUP ACM"
+gmsc		a	"ISUP ACM"
+c		gmsc	"ISUP ANM"
+gmsc		scf_f	"CAP ERB [O-Answer]"
+gmsc		scf	"CAP ERB [T-Answer]"
+gmsc		a	"ISUP ANM"
+
+c		gmsc	"ISUP REL"
+gmsc		scf_f	"CAP ERB [O-Disconnect]"
+gmsc		scf	"CAP ERB [T-Disconnect]"
+gmsc		a	"ISUP REL"
+

@@ -1,0 +1,38 @@
+[global]
+title	"Early call forwarding - subscribe detached from VLR"
+
+[entities]
+a		"A-party"
+gmsc		"GMSC/gsmSSF"
+hlr		"HLR"
+vmsc		"VMSC"
+scf		"gsmSCF (MT)"
+scf_f		"gsmSCF (MF)"
+c		"C-party"
+
+[messages]
+a		gmsc	"ISUP IAM [MSISDN]"
+
+gmsc		hlr	"MAP SRI [MSISDN]"
+hlr		gmsc	"MAP SRI-Res [T-CSI]"
+gmsc		scf	"CAP IDP [MSISDN]"
+scf		gmsc	"CAP CUE"
+gmsc		hlr	"MAP SRI [MSISDN]"
+hlr		vmsc	"MAP PRN [IMSI]"
+vmsc		hlr	"MAP PRN-Res [IMSI]"
+hlr		gmsc	"MAP SRI-Res [FTN-NRc, O-CSI]"
+
+gmsc		scf_f	"CAP IDP [FTN-NRc]"
+scf_f		gmsc	"CAP RRB [O-Answer, O-Disconnect]"
+scf_f		gmsc	"CAP CUE"
+
+gmsc		c	"ISUP IAM [FTN-NRc]"
+c		gmsc	"ISUP ACM"
+gmsc		a	"ISUP ACM"
+c		gmsc	"ISUP ANM"
+gmsc		scf_f	"CAP ERB [O-Answer]"
+gmsc		a	"ISUP ANM"
+
+c		gmsc	"ISUP REL"
+gmsc		scf_f	"CAP ERB [O-Disconnect]"
+gmsc		a	"ISUP REL"

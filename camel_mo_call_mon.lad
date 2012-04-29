@@ -1,0 +1,24 @@
+[global]
+title	"Sequence diagram for CAMEL monitoring of MO call"
+
+[entities]
+a		"A"
+vmsc		"VMSC"
+b		"B"
+scf		"gsmSCF"
+
+[messages]
+a		vmsc	"CC SETUP [MSISDN]"
+vmsc		scf	"CAP IDP"
+scf		vmsc	"CAP RRB [O-Answer, O-Disconnect]"
+scf		vmsc	"CAP CUE"
+vmsc		b	"ISUP IAM"
+b		vmsc	"ISUP ACM"
+vmsc		a	"CC ALERTING"
+b		vmsc	"ISUP ANM"
+vmsc		scf	"CAP ERB [O-Answer]"
+vmsc		a	"CC CONNECT"
+a		vmsc	"CC RELEASE"
+vmsc		scf	"CAP ERB [O-Disconnect]"
+scf		vmsc	"CAP RC"
+
