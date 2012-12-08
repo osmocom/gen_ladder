@@ -8,6 +8,7 @@ bss	"BSS"
 sgsn	"SGSN"
 dns	"DNS"
 ggsn	"GGSN"
+inet	"Internet"
 
 [messages]
 # define the protocol messages in-order
@@ -21,5 +22,7 @@ ggsn	sgsn	"GTP-C (PDP CONTEXT ACT ACK)"
 sgsn	ms	"LLC (SM PDP CONTEXT ACT ACK)"
 ms	sgsn	"LLC (SNDCP (encapsulated IPv4))"
 sgsn	ggsn	"GTP-U (encapsulated IPv4)"
+ggsn	inet	"IPv4 packet"
+inet	ggsn	"IPv4 packet"
 ggsn	sgsn	"GTP-U (encapsulated IPv4)"
 sgsn	ms	"LLC (SNDCP (encapsulated IPv4))"
